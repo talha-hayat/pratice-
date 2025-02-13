@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 10px 0;
+            overflow: hidden; /* Hide the scroll bar */
+        }
+
+        nav {
+            flex: 1;
+            overflow-x: auto; /* Allow horizontal scrolling */
+            scroll-behavior: smooth; /* Smooth scrolling */
+            -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+        }
+
+        nav::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 5px 10px;
+            padding: 5px 10px;
+            border-radius: 8px;
+            background-color: #9e979727;
+            font-size: 1rem;
+            font-weight: bold;
+            flex-shrink: 0; /* Prevent items from shrinking */
+        }
+
+        nav ul li:hover {
+            background-color: #9e97975d;
+        }
+
+        nav ul li a {
+            color: rgb(19, 17, 17);
+            text-decoration: none;
+            font-size: 14px;
+            white-space: nowrap; /* Text ko ek line mein rakhta hai */
+        }
+
+        .scroll-button {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .scroll-button.left {
+            left: 0;
+        }
+
+        .scroll-button.right {
+            right: 0;
+        }
+
+        .scroll-button:hover {
+            background-color: #cc0000;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        /* Sponsored Card (Full Width) */
+        .video.sponsored {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .video.sponsored img {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .video.sponsored .video-info {
+            padding: 15px;
+        }
+
+        .video.sponsored h2 {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+
+        .video.sponsored p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .video.sponsored button {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .video.sponsored button:hover {
+            background-color: #cc0000;
+        }
+
+        /* Regular Cards (Grid Layout) */
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding-bottom: 50px;
+        }
+
+        .video {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video img {
+            width: 100%;
+            height: 150px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .video-info {
+            padding: 15px;
+            flex: 1;
+        }
+
+        .video h2 {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+
+        .video p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            margin-top: 200px;
+        }
+
+        @media screen and (max-width: 800px) {
+            .video.sponsored {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Youtube</h1>
+    </header>
+
+    <div class="nav-container">
+        <button class="scroll-button left" onclick="scrollNavLeft()">&#10094;</button>
+        <nav>
+            <ul id="navList">
+                <li><a href="#">Music</a></li>
+                <li><a href="#">Mizes</a></li>
+                <li><a href="#">Pakistani dramas</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Live</a></li>
+                <li><a href="#">Military vehicle</a></li>
+                <li><a href="#">AI</a></li>
+                <li><a href="#">Jet aircrafts</a></li>
+                <li><a href="#">Indian soap operas</a></li>
+                <li><a href="#">Allamah</a></li>
+                <li><a href="#">Live television</a></li>
+                <li><a href="#">Television series</a></li>
+                <li><a href="#">Live</a></li>
+                <li><a href="#">Military vehicle</a></li>
+                <li><a href="#">AI</a></li>
+                <li><a href="#">Jet aircrafts</a></li>
+                <li><a href="#">Indian soap operas</a></li>
+                <li><a href="#">Allamah</a></li>
+                <li><a href="#">Live television</a></li>
+                <li><a href="#">Television series</a></li>
+            </ul>
+        </nav>
+        <button class="scroll-button right" onclick="scrollNavRight()">&#10095;</button>
+    </div>
+
+    <main>
+        <!-- Sponsored Card (Full Width) -->
+        <section class="video sponsored">
+            <div class="full-card-img">
+                <img src="./images/product 01.webp" alt="Cadbury Dairy Milk">
+            </div>
+            <div class="video-info">
+                <h2>New Cadbury Dairy Milk Water Rolls Khud Tru...</h2>
+                <p>Sponsored - Cadbury Dairy Milk Pakistan</p>
+                <button onclick="watchNow()">Watch Now</button>
+            </div>
+        </section>
+
+        <!-- Regular Cards (Grid Layout) -->
+        <div class="video-container">
+            <section class="video">
+                <img src="./images/product 02.webp" alt="Higher Episode 43">
+                <div class="video-info">
+                    <h2>Higher Episode 43 (Subtitles) 13th February 2025 | Anmol...</h2>
+                    <p>Green TV Entertainment</p>
+                    <p>423K views - 47 minutes ago</p>
+                </div>
+            </section>
+
+            <section class="video">
+                <img src="./images/product 03.webp" alt="Heart Touching Kalam">
+                <div class="video-info">
+                    <h2>Heart Touching Kalam | Khud Ko Party Men Rakhen | Hanf...</h2>
+                    <p>Hanfi Brothers</p>
+                    <p>648 views - 6 hours ago</p>
+                </div>
+            </section>
+
+            <section class="video">
+                <img src="./images/product 04.webp" alt="The Story of Nathuram Godse">
+                <div class="video-info">
+                    <h2>The Story of Nathuram Godse | Was He Right? | Dhruv Rathee</h2>
+                    <p>Dhruv Rathee</p>
+                    <p>174K views - 29 minutes ago</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Youtube. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function scrollNavLeft() {
+            const navList = document.getElementById('navList');
+            navList.scrollBy({
+                left: -100, // Left side move karne ke liye
+                behavior: 'smooth'
+            });
+        }
+
+        function scrollNavRight() {
+            const navList = document.getElementById('navList');
+            navList.window.scrollBy({
+                left: 100, // Right side move karne ke liye
+                behavior: 'smooth'
+            });
+        }
+
+        function watchNow() {
+            alert("You are now watching the sponsored video!");
+        }
+    </script>
+</body>
+</html>
